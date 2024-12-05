@@ -1,45 +1,169 @@
 {
-    "openapi": "3.1.0", 
-    "info": {
-        "title": "MTA Service API", 
-        "description": "Makes requests to MTA API and saves into a database", 
-        "version": "1.0.0"
-    }, 
-    "servers": [
-        {"url": " http://3.84.62.68:5001/", "description": "server on AWS EC2"}
-    ], 
-    "paths": {
-        "/equipments/{station}": {
-            "get": {
-                "summary": "Get equipments info for the station from MTA API", 
-                "description": "Returns a list of equipments info for the station", 
-                "responses": {
-                    "200": {
-                        "description": "A JSON array of equipments info", 
-                        "content": {
-                            "application/json": {
-                                "schema": {"type": "array", "items": "equipment info"}
-                            }
-                        }
-                    }
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Read Root",
+        "operationId": "read_root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
                 }
+              }
             }
-        }, 
-        "/outages/{station}": {
-            "get": {
-                "summary": "Get outages info for the station from MTA", 
-                "description": "returns all outages (escalators and/or elevators) associated with the station",
-                "responses": {
-                    "200": {
-                        "description": "A JSON array of outages info", 
-                        "content": {
-                            "application/json": {
-                                "schema": {"type": "array", "items": "outages info"}
-                            }
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
+    },
+    "/outages/{station}": {
+      "get": {
+        "summary": "Read Outages",
+        "operationId": "read_outages_outages__station__get",
+        "parameters": [
+          {
+            "name": "station",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Station"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipments/{station}": {
+      "get": {
+        "summary": "Read Equipments",
+        "operationId": "read_equipments_equipments__station__get",
+        "parameters": [
+          {
+            "name": "station",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Station"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
 }
