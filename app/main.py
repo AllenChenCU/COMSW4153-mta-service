@@ -9,7 +9,12 @@ from pull import (
     refresh_data,
 )
 app = FastAPI()
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware, 
+    allow_origins=["*"], 
+    allow_headers=["*"], 
+    allow_methods=["*"],
+)
 
 
 @app.get("/")
