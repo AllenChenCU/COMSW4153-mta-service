@@ -8,6 +8,10 @@ Team: CloudGPT
 
 ## API Usage:
 
+Deployed on AWS EC2 with Docker
+
+(Updated) now deployed on GCP Cloud run with Docker with HTTPS
+
 ### 1. Equipments
 
 Given a station name, this API endpoint returns all equipments (escalators and elevators) associated with the station. 
