@@ -12,17 +12,17 @@ Team: CloudGPT
 
 Given a station name, this API endpoint returns all equipments (escalators and elevators) associated with the station. 
 
-Link template: https://3.84.62.68/equipments/{station}
+Link template: https://comsw4153-mta-service-973496949602.us-central1.run.app/equipments/{station}
 
-Example: https://3.84.62.68/equipments/74%20St-Broadway (74 St-Broadway)
+Example: https://comsw4153-mta-service-973496949602.us-central1.run.app/equipments/74%20St-Broadway (74 St-Broadway)
 
 ### 2. Outages
 
 Given a station name, this API endpoint returns all outages (escalators and/or elevators) associated with the station.
 
-Link template: https://3.84.62.68/outages/{station}
+Link template: https://comsw4153-mta-service-973496949602.us-central1.run.app/outages/{station}
 
-examples: https://3.84.62.68/outages/74%20St-Broadway
+examples: https://comsw4153-mta-service-973496949602.us-central1.run.app/outages/74%20St-Broadway
 
 Try out more stations: 175%20St (175 St), Euclid%20Av (Euclid Av), Times%20Sq-42%20St (Times Sq-42 St)
 

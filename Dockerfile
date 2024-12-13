@@ -9,7 +9,7 @@ WORKDIR /app
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 443
+EXPOSE 5001
 
 ARG DBHOST
 ENV DBHOST=$DBHOST
